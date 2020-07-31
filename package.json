@@ -1,0 +1,8 @@
+{
+  "name": "learn-backend-electron",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rafal-szymanko/learn-backend-electron.git",
+  "author": "rafal-szymanko <61496255+rafal-szymanko@users.noreply.github.com>",
+  "license": "MIT"
+}
