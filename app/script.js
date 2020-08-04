@@ -5,17 +5,26 @@ function App() {
 
   const [status, setStatus] = useState('off');
   const [time, setTime] = useState(null);
+  const [session, setSession] = useState(1);
 
+  console.log(session);
   useEffect(() => {
     if (time === null) return;
 
     if (time === 0 && status === 'work') {
       setStatus('rest');
-      setTime(20);
       playBell();
+      setSession(session + 1);
+      
+      if(Number.isInteger(session / 4)) {
+        setTime(1800);
+      } else {
+        setTime(300);
+      }
+
     } else if (time === 0 && status === 'rest') {
       setStatus('work');
-      setTime(1200);
+      setTime(1500);
       playBell();
     }
 
@@ -57,8 +66,8 @@ function App() {
     if (status === 'off') {
       return (
         <div>
-          <p>According to optometrists in order to save your eyes, you should follow the 20/20/20. It means you should to rest your eyes every 20 minutes for 20 seconds by looking more than 20 feet away.</p>
-          <p>This app will help you track your time and inform you when it's time to rest.</p>
+          <p>The Pomodoro Technique is a productivity system that helps you take the right number of breaks while still getting your work done. Traditionally, it breaks up your day into 25-minute focus sessions followed by five-minute breaks. It's the perfect length of time for soaking up knowledge and getting things done—without burning out.</p>
+          <p>A dedicated Pomodoro app removes the need to divide up your day manually—instead, it tells you exactly when to work and when to take a short break.</p>
         </div>
       )
     }
@@ -76,7 +85,7 @@ function App() {
   };
 
   const runTimer = () => {
-    setTime(1200);
+    setTime(1500);
     setStatus('work');
   };
 
@@ -96,7 +105,7 @@ function App() {
 
   return (
     <div>
-      <h1>Protect your eyes</h1>
+      <h1>Pomodoro Timer</h1>
       {renderDescription()}
       {renderImage()}
       <div className="timer">
